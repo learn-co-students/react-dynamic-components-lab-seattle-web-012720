@@ -9,12 +9,26 @@ export default class ColorBox extends Component {
   }
 
   render() {
+    const { opacity } = this.props;
+    if (opacity < 0.2) {
+      return null;
+    }
+
     return (
-      <div className="color-box" style={{opacity: null /*replace null with the value*/}}>
-        {/* your conditional code here! */}
+      <div className="color-box" style={{opacity: opacity}}>
+        <ColorBox opacity={opacity - 0.1} />
       </div>
-    )
+    );
   }
+
+  // render() {
+  //   const { opacity } = this.props;
+  //   return (
+  //     <div className="color-box" style={{opacity: opacity}}>
+  //       {opacity < 0.2 ? null : <ColorBox opacity={opacity - 0.1} />}
+  //     </div>
+  //   );
+  // }
 
 }
 
